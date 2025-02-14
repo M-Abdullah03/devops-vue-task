@@ -22,7 +22,11 @@ jobs:
           }
 
       - name: Build Docker image
-        run: docker build -t my-app:latest .
+        run: |
+            docker build -t my-app:latest `
+              --build-arg VITE_APP_DEV_PORT="${{ secrets.VITE_APP_DEV_PORT }}" `
+              --build-arg VITE_APP_VERSION="${{ secrets.VITE_APP_VERSION }}" `
+              --build-arg VITE_APP_TITLE="${{ secrets.VITE_APP_TITLE }}" .
 
       - name: Run the container with environment variables
         shell: powershell

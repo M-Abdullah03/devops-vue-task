@@ -5,11 +5,6 @@ FROM node:20 as build
 WORKDIR /app
 
 
-# Pass environment variables
-ENV VITE_APP_DEV_PORT=""
-ENV VITE_APP_VERSION=""
-ENV VITE_APP_TITLE=""
-
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
