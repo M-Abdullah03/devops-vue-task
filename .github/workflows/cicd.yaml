@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Debug - Check if secrets exist
+        shell: powershell
+        run: |
+          if ("${{ secrets.VITE_APP_DEV_PORT }}" -eq '') { Write-Error "VITE_APP_DEV_PORT is empty" }
+          if ("${{ secrets.VITE_APP_VERSION }}" -eq '') { Write-Error "VITE_APP_VERSION is empty" }
+          if ("${{ secrets.VITE_APP_TITLE }}" -eq '') { Write-Error "VITE_APP_TITLE is empty" }
 
       - name: Stop existing container (if running)
         shell: powershell
