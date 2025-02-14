@@ -14,8 +14,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Stop existing container (if running)
+        shell: pwsh
         run: |
-          docker stop my-app-container; docker rm my-app-container
+          if (docker ps -q -f name=my-app-container) {
+            docker stop my-app-container
+            docker rm my-app-container
+          }
 
       - name: Build Docker image
         run: docker build -t my-app:latest .
