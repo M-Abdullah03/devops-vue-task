@@ -3,6 +3,15 @@ FROM node:20 as build
 
 # Set working directory
 WORKDIR /app
+# Define build arguments
+ARG VITE_APP_DEV_PORT
+ARG VITE_APP_VERSION
+ARG VITE_APP_TITLE
+
+# Set environment variables from build arguments
+ENV VITE_APP_DEV_PORT=$VITE_APP_DEV_PORT
+ENV VITE_APP_VERSION=$VITE_APP_VERSION
+ENV VITE_APP_TITLE=$VITE_APP_TITLE
 
 
 # Copy package.json and package-lock.json
