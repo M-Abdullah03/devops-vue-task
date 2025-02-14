@@ -17,7 +17,6 @@ jobs:
         shell: powershell
         run: |
           if ("${{ secrets.VITE_APP_DEV_PORT }}" -eq '') { Write-Error "VITE_APP_DEV_PORT is empty" }
-          if ("${{ secrets.VITE_APP_VERSION }}" -eq '') { Write-Error "VITE_APP_VERSION is empty" }
           if ("${{ secrets.VITE_APP_TITLE }}" -eq '') { Write-Error "VITE_APP_TITLE is empty" }
 
       - name: Stop existing container (if running)
@@ -32,10 +31,9 @@ jobs:
         run: |
             docker build -t my-app:latest `
               --build-arg VITE_APP_DEV_PORT="${{ secrets.VITE_APP_DEV_PORT }}" `
-              --build-arg VITE_APP_VERSION="${{ secrets.VITE_APP_VERSION }}" `
               --build-arg VITE_APP_TITLE="${{ secrets.VITE_APP_TITLE }}" .
 
       - name: Run the container with environment variables
         shell: powershell
         run: |
-              docker run -d -p 3000:3000 --name my-app-container -e "VITE_APP_DEV_PORT=${{ secrets.VITE_APP_DEV_PORT }}" -e "VITE_APP_VERSION=${{ secrets.VITE_APP_VERSION }}" -e "VITE_APP_TITLE=${{ secrets.VITE_APP_TITLE }}" my-app:latest
+              docker run -d -p 3000:3000 --name my-app-container -e "VITE_APP_DEV_PORT=${{ secrets.VITE_APP_DEV_PORT }}" -e "VITE_APP_TITLE=${{ secrets.VITE_APP_TITLE }}" my-app:latest
