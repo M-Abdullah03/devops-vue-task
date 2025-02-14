@@ -1,8 +1,6 @@
-# Vue 3 + TypeScript + Vite
+# Devops task (Vue 3 + TypeScript + Vite App)
 
-# Devops task
-
-Steps to run the app
+### Steps to run the app
 
 1. Make a .env file similar to sample.env provided
 2. Run ```npm install```
@@ -10,18 +8,19 @@ Steps to run the app
 4. Run ```npm run build``` to build the app
 
 #
-You have to make github actions for the deployment of this task
+### Tasks you have to do
 
-1. Make a trigger on push on main branch
-2. Setup a self hosted github runner on you pc
-3. Github actions will run on you pc runner
-4. Make a docker file to build the docker image
-5. Make a github action to build the docker image using docker file
-6. Make a github action to deploy the app on your pc
-7. Use github variables and secrets for managing the env of the app
+1. Fork the repo to you own github
+2. Make a trigger on push on main branch
+3. Setup a self hosted github runner on you pc
+4. Github actions will run on you pc runner
+5. Make a docker file to build the docker image
+6. Make a github action to build the docker image using docker file
+7. Make a github action to deploy the app on your pc
+8. Use github variables and secrets for managing the env of the app
 
 ###
-# Submittion:
+# Submission:
 
 For Submission you have to make a demo video which includes following things:
 
