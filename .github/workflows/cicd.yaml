@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Stop existing container (if running)
-        run: docker stop my-app-container || true && docker rm my-app-container || true
+        run: |
+          docker stop my-app-container; docker rm my-app-container
 
       - name: Build Docker image
         run: docker build -t my-app:latest .
@@ -26,4 +27,3 @@ jobs:
             -e VITE_APP_VERSION=${{ secrets.VITE_APP_VERSION }} \
             -e VITE_APP_TITLE="${{ secrets.VITE_APP_TITLE }}" \
             my-app:latest
-    
